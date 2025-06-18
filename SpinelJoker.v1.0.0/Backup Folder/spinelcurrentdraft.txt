@@ -1,0 +1,89 @@
+--- STEAMODDED HEADER
+--- MOD_NAME: Spinel Joker Mod
+--- MOD_ID: j_spinel
+--- MOD_AUTHOR: [FirstTry]
+--- MOD_DESCRIPTION: I love Spinel.
+--- PREFIX: spinel
+
+SMODS.Atlas {
+    key  = "spinel",
+    path = "j_spinel.png",
+    px   = 71,
+    py   = 95,
+}
+
+SMODS.Joker {
+    key = "j_spinel",
+    atlas = "spinel",
+    rarity = 3,
+    cost = 6,
+    unlocked = true,
+    blueprint_compat = true,
+    apply_to_score = true,
+    eternal_compat = true,
+    pos = { x = 0, y = 0 },
+    config = {
+        extra = {
+            Xmult = 6
+        }
+    },
+
+    loc_txt = {
+        ['en-us'] = {
+            name = 'Spinel',
+            text = {
+                '{X:red,C:white}X{1}{} Mult',
+                '{C:inactive}Gains extra {X:red,C:white}X{1}{} {C:inactive}if 4 Aces are scored. Result: {X:red,C:white}X{2}{}{}'
+            }
+        }
+    },
+
+    loc_vars = function(self, info_queue, center)
+        local base = center.ability.extra.Xmult
+        return {
+            vars = {
+                base,
+                base * 2
+            }
+        }
+    end,
+
+    calculate = function(self, card, context)
+        local base_Xmult = card.ability.extra.Xmult or 1
+        local total_Xmult = base_Xmult
+        local message = ""
+        local colour = G.C.MULT
+
+        if context.joker_main or context.other_jokers then
+            message = "X" .. tostring(base_Xmult)
+            return {
+                card = card,
+                Xmult_mod = base_Xmult,
+                message = message,
+                colour = colour
+            }
+        end
+
+        if context.scoring_hand then
+            local aces = 0
+            for _, played_card in ipairs(context.full_hand or {}) do
+                if played_card.base.id == 1 then
+                    aces = aces + 1
+                end
+            end
+
+            if aces == 4 then
+                total_Xmult = base_Xmult * 2
+            end
+
+            message = "X" .. tostring(total_Xmult)
+
+            return {
+                card = card,
+                Xmult_mod = total_Xmult,
+                message = message,
+                colour = colour
+            }
+        end
+    end
+}
