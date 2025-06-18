@@ -5,7 +5,7 @@ A custom Joker mod for [Balatro](https://store.steampowered.com/app/2269430/Bala
 ## 🔮 Joker Details
 
 - **Name**: Spinel  
-- **Rarity**: Legendary  
+- **Rarity**: Rare  
 - **Cost**: 6  
 - **Effect**:  
   - Starts with **x6 Mult**
