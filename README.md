@@ -15,9 +15,10 @@ A custom Joker mod for [Balatro](https://store.steampowered.com/app/2269430/Bala
 ## 🛠 Installation
 
 1. Install Lovely and Steamodded for Balatro.
-2. Download or clone this repository.
-3. Place it inside the `Mods` folder. It should look like this: "%appdata%/Roaming/Balatro/Mods"
-4. Check the mod loader in-game and see if the mod is enabled or not.
+2. [Download](https://github.com/YourUser/balatro-spinel-joker-mod/releases/latest/download/SpinelJoker-v1.0.0.zip) this file.
+3. Extract it to folder name "SpinelJoker" or similar.
+4. Place it inside the `Mods` folder. It should look like this: "%appdata%/Roaming/Balatro/Mods"
+5. Check the mod loader in-game and see if the mod is enabled or not.
 
 ## 📂 Files Included
 
